@@ -42,6 +42,7 @@ if static_dir.exists():
     assets_dir = static_dir / "assets"
     if assets_dir.exists():
         app.mount("/assets", StaticFiles(directory=assets_dir), name="assets")
+        app.mount("/static/assets", StaticFiles(directory=assets_dir), name="static-assets")
 
 uploads_dir = BASE_DIR / "uploads"
 uploads_dir.mkdir(exist_ok=True)
