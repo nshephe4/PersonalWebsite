@@ -116,6 +116,8 @@ Replace `your.email@example.com` in:
 
 Best for: Simple portfolio without API requirements.
 
+Note: the photography upload feature needs the FastAPI backend running on a live server. A pure GitHub Pages deployment can display the gallery, but it cannot save uploads.
+
 1. **Create GitHub repository:**
    ```bash
    git remote add origin https://github.com/your-username/nathanieljshepherd.com.git
@@ -127,7 +129,15 @@ Best for: Simple portfolio without API requirements.
 3. **Configure custom domain:**
    - Go to repo Settings → Pages
    - Custom domain: `nathanieljshepherd.com`
-   - Update DNS CNAME to `<your-github-username>.github.io`
+   - Update DNS as follows:
+     - Apex/root `nathanieljshepherd.com` A records:
+       - `185.199.108.153`
+       - `185.199.109.153`
+       - `185.199.110.153`
+       - `185.199.111.153`
+     - `www.nathanieljshepherd.com` CNAME:
+       - `nshephe4.github.io`
+   - Keep the repository `CNAME` file set to `nathanieljshepherd.com`
 
 ---
 

@@ -1,13 +1,24 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, File, Form, HTTPException, UploadFile
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse
-import os
+from fastapi.middleware.cors import CORSMiddleware
+from typing import List
 from pathlib import Path
+import json
+from uuid import uuid4
 
 app = FastAPI(
     title="Nathaniel Shepherd Portfolio",
     description="Graduate research portfolio API",
     version="1.0.0",
+)
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
 
 # Get the directory where this script is located
@@ -17,6 +28,23 @@ BASE_DIR = Path(__file__).resolve().parent
 static_dir = BASE_DIR / "static"
 if static_dir.exists():
     app.mount("/static", StaticFiles(directory=static_dir), name="static")
+
+uploads_dir = BASE_DIR / "uploads"
+uploads_dir.mkdir(exist_ok=True)
+metadata_file = uploads_dir / "photos.json"
+
+
+def load_photos() -> list[dict[str, str]]:
+    if not metadata_file.exists():
+        return []
+    try:
+        return json.loads(metadata_file.read_text(encoding="utf-8"))
+    except json.JSONDecodeError:
+        return []
+
+
+def save_photos(photos: list[dict[str, str]]) -> None:
+    metadata_file.write_text(json.dumps(photos, indent=2), encoding="utf-8")
 
 @app.get("/")
 async def root():
@@ -44,6 +72,44 @@ async def get_info():
             "twitter": "https://twitter.com"
         }
     }
+
+
+@app.get("/api/photos")
+async def list_photos():
+    """Return uploaded photos for the gallery."""
+    return {"photos": load_photos()}
+
+
+@app.post("/api/photos")
+async def upload_photo(
+    file: UploadFile = File(...),
+    title: str = Form(...),
+):
+    """Upload a photo and store its metadata locally."""
+    if not file.content_type or not file.content_type.startswith("image/"):
+        raise HTTPException(status_code=400, detail="Please upload an image file.")
+
+    extension = Path(file.filename or "photo").suffix.lower() or ".jpg"
+    stored_name = f"{uuid4().hex}{extension}"
+    stored_path = uploads_dir / stored_name
+
+    contents = await file.read()
+    stored_path.write_bytes(contents)
+
+    photos = load_photos()
+    photo_record = {
+        "id": uuid4().hex,
+        "title": title.strip() or "Untitled Photo",
+        "filename": stored_name,
+        "url": f"/uploads/{stored_name}",
+    }
+    photos.insert(0, photo_record)
+    save_photos(photos)
+
+    return photo_record
+
+
+app.mount("/uploads", StaticFiles(directory=uploads_dir), name="uploads")
 
 # Catch-all for React Router - serve index.html for any non-API route
 @app.get("/{full_path:path}")
