@@ -156,7 +156,7 @@ sudo apt install -y python3 python3-venv python3-pip nginx certbot python3-certb
 4. Clone the repository on the VM and create the Python environment:
 
 ```bash
-cd /opt
+cd /home/nshep6998
 sudo git clone https://github.com/nshephe4/PersonalWebsite.git
 cd PersonalWebsite/backend
 python3 -m venv .venv
@@ -167,7 +167,7 @@ pip install -r requirements.txt
 5. Build the React frontend so FastAPI can serve the compiled site:
 
 ```bash
-cd /opt/PersonalWebsite
+cd /home/nshep6998/PersonalWebsite
 npm install
 npm run build
 ```

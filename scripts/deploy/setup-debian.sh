@@ -2,7 +2,7 @@
 set -euo pipefail
 
 APP_NAME="PersonalWebsite"
-APP_DIR="/opt/${APP_NAME}"
+APP_DIR="/home/nshep6998/${APP_NAME}"
 BACKEND_DIR="${APP_DIR}/backend"
 FRONTEND_DIR="${APP_DIR}/frontend"
 SERVICE_NAME="personalwebsite"

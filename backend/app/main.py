@@ -39,6 +39,9 @@ BASE_DIR = Path(__file__).resolve().parent
 static_dir = BASE_DIR / "static"
 if static_dir.exists():
     app.mount("/static", StaticFiles(directory=static_dir), name="static")
+    assets_dir = static_dir / "assets"
+    if assets_dir.exists():
+        app.mount("/assets", StaticFiles(directory=assets_dir), name="assets")
 
 uploads_dir = BASE_DIR / "uploads"
 uploads_dir.mkdir(exist_ok=True)
