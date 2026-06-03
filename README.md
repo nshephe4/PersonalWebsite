@@ -150,7 +150,7 @@ Follow these steps to run FastAPI on the VM and connect `nathanieljshepherd.com`
 
 ```bash
 sudo apt update
-sudo apt install -y python3 python3-venv python3-pip nginx
+sudo apt install -y python3 python3-venv python3-pip nginx certbot python3-certbot-nginx
 ```
 
 4. Clone the repository on the VM and create the Python environment:
@@ -176,13 +176,16 @@ npm run build
 7. Reload systemd and start the service:
 
 ```bash
-sudo cp /opt/PersonalWebsite/scripts/deploy/personalwebsite.service /etc/systemd/system/personalwebsite.service
-sudo cp /opt/PersonalWebsite/scripts/deploy/personalwebsite.nginx /etc/nginx/sites-available/personalwebsite
+sudo cp PersonalWebsite/scripts/deploy/personalwebsite.service /etc/systemd/system/personalwebsite.service
+sudo cp PersonalWebsite/scripts/deploy/personalwebsite.nginx /etc/nginx/sites-available/personalwebsite
 sudo ln -sf /etc/nginx/sites-available/personalwebsite /etc/nginx/sites-enabled/personalwebsite
 sudo rm -f /etc/nginx/sites-enabled/default
 sudo systemctl daemon-reload
 sudo systemctl enable personalwebsite
 sudo systemctl restart personalwebsite
+sudo nginx -t
+sudo systemctl restart nginx
+sudo certbot --nginx -d nathanieljshepherd.com -d www.nathanieljshepherd.com
 sudo nginx -t
 sudo systemctl restart nginx
 ```

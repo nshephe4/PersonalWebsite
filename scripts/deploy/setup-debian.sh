@@ -13,7 +13,7 @@ if [[ ${EUID} -ne 0 ]]; then
 fi
 
 apt update
-apt install -y git curl nginx python3 python3-venv python3-pip build-essential
+apt install -y git curl nginx python3 python3-venv python3-pip build-essential certbot python3-certbot-nginx
 
 if ! command -v node >/dev/null 2>&1; then
   curl -fsSL https://deb.nodesource.com/setup_20.x | bash -
@@ -53,6 +53,11 @@ rm -f /etc/nginx/sites-enabled/default
 systemctl daemon-reload
 systemctl enable "${SERVICE_NAME}"
 systemctl restart "${SERVICE_NAME}"
+
+nginx -t
+systemctl restart nginx
+
+certbot --nginx -d nathanieljshepherd.com -d www.nathanieljshepherd.com --non-interactive --agree-tos --redirect -m your.email@example.com
 
 nginx -t
 systemctl restart nginx
