@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Photography | Nathaniel J. Shepherd</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Newsreader:opsz,wght@6..72,400;6..72,600&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="site-bg" aria-hidden="true"></div>
+  <header class="site-header">
+    <a class="brand" href="index.html">NJS</a>
+    <button class="menu-toggle" aria-expanded="false" aria-controls="site-nav">Menu</button>
+    <nav id="site-nav" class="site-nav" aria-label="Primary">
+      <a class="nav-link" href="index.html">Home</a>
+      <a class="nav-link" href="about.html">About</a>
+      <a class="nav-link" href="research.html">Research</a>
+      <a class="nav-link" href="publications.html">Publications</a>
+      <a class="nav-link is-active" href="photography.html">Photography</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="page-head reveal">
+      <p class="eyebrow">Photography</p>
+      <h1>Field Notes in Light</h1>
+      <p>
+        Photography is where I practice attention. These images capture atmosphere, detail, and stories found between destinations.
+      </p>
+    </section>
+
+    <section class="gallery reveal" aria-label="Photography gallery">
+      <figure class="gallery-item tone-a">
+        <figcaption>Morning Geometry</figcaption>
+      </figure>
+      <figure class="gallery-item tone-b">
+        <figcaption>Rain on Main Street</figcaption>
+      </figure>
+      <figure class="gallery-item tone-c">
+        <figcaption>Riverbank in Winter</figcaption>
+      </figure>
+      <figure class="gallery-item tone-d">
+        <figcaption>Station Platform Study</figcaption>
+      </figure>
+      <figure class="gallery-item tone-e">
+        <figcaption>Late Summer Field</figcaption>
+      </figure>
+      <figure class="gallery-item tone-f">
+        <figcaption>Night Window Reflection</figcaption>
+      </figure>
+    </section>
+
+    <section class="spotlight reveal">
+      <div>
+        <p class="eyebrow">Add Your Photos</p>
+        <h2>Replace Placeholder Tiles</h2>
+        <p>
+          Add your own photos to the assets/photos folder, then set each gallery tile background to your image URL in the stylesheet.
+        </p>
+      </div>
+      <a class="btn btn-outline" href="about.html">About the Photographer</a>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>&copy; <span id="year"></span> Nathaniel J. Shepherd</p>
+    <p><a href="mailto:your.email@example.com">your.email@example.com</a></p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

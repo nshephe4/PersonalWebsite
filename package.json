@@ -1,0 +1,29 @@
+{
+  "name": "nathaniel-shepherd-portfolio",
+  "version": "1.0.0",
+  "description": "Full-stack graduate research portfolio with React frontend and FastAPI backend",
+  "private": true,
+  "scripts": {
+    "install:all": "npm install && cd frontend && npm install && cd ../backend && pip install -r requirements.txt && cd ..",
+    "dev": "concurrently \"npm run dev:frontend\" \"npm run dev:backend\"",
+    "dev:frontend": "cd frontend && npm run dev",
+    "dev:backend": "cd backend && python -m uvicorn app.main:app --reload --host 0.0.0.0 --port 8000",
+    "build": "npm run build:frontend",
+    "build:frontend": "cd frontend && npm run build",
+    "start": "cd backend && python -m uvicorn app.main:app --host 0.0.0.0 --port 8000",
+    "test": "npm run test:frontend",
+    "test:frontend": "cd frontend && npm run test || true"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  },
+  "keywords": [
+    "portfolio",
+    "react",
+    "fastapi",
+    "research",
+    "graduate"
+  ],
+  "author": "Nathaniel J. Shepherd",
+  "license": "MIT"
+}

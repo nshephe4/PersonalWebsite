@@ -1,0 +1,12 @@
+.site-footer {
+  margin-top: 2.1rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.8rem;
+  color: var(--ink-soft);
+}
+
+.site-footer a {
+  color: inherit;
+}
