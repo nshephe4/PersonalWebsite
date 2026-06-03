@@ -2,9 +2,9 @@ from fastapi import FastAPI, File, Form, HTTPException, UploadFile
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse
 from fastapi.middleware.cors import CORSMiddleware
-from typing import List
 from pathlib import Path
 import json
+import os
 from uuid import uuid4
 
 app = FastAPI(
@@ -13,9 +13,20 @@ app = FastAPI(
     version="1.0.0",
 )
 
+app_domain = os.getenv("APP_DOMAIN", "https://nathanieljshepherd.com")
+additional_origins = [origin.strip() for origin in os.getenv("ALLOWED_ORIGINS", "").split(",") if origin.strip()]
+
+allowed_origins = [
+    app_domain,
+    "https://www.nathanieljshepherd.com",
+    "http://localhost:5173",
+    "http://localhost:8000",
+]
+allowed_origins.extend(additional_origins)
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=allowed_origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -126,4 +137,9 @@ async def serve_spa(full_path: str):
 
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=True)
+    uvicorn.run(
+        "main:app",
+        host="0.0.0.0",
+        port=int(os.getenv("PORT", "8000")),
+        reload=True,
+    )

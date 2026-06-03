@@ -1,0 +1,25 @@
+server {
+    listen 80;
+    server_name nathanieljshepherd.com www.nathanieljshepherd.com;
+
+    location /static/ {
+        alias /opt/PersonalWebsite/backend/static/;
+        access_log off;
+        expires 30d;
+    }
+
+    location /uploads/ {
+        alias /opt/PersonalWebsite/backend/uploads/;
+        access_log off;
+        expires 7d;
+    }
+
+    location / {
+        proxy_pass http://127.0.0.1:8000;
+        proxy_http_version 1.1;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+}
