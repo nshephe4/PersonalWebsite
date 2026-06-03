@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Newsreader:opsz,wght@6..72,400;6..72,600&display=swap");
+
 :root {
   --ink: #102028;
   --ink-soft: #2f434c;
@@ -375,5 +377,3 @@ p {
     grid-template-columns: 1fr;
   }
 }
-
-@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Newsreader:opsz,wght@6..72,400;6..72,600&display=swap");
