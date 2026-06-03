@@ -6,11 +6,11 @@ After=network.target
 Type=simple
 User=www-data
 Group=www-data
-WorkingDirectory=/opt/PersonalWebsite/backend
+WorkingDirectory=PersonalWebsite/backend
 Environment=PORT=8000
 Environment=APP_DOMAIN=https://nathanieljshepherd.com
 Environment=ALLOWED_ORIGINS=https://nathanieljshepherd.com,https://www.nathanieljshepherd.com
-ExecStart=/opt/PersonalWebsite/backend/.venv/bin/uvicorn app.main:app --host 0.0.0.0 --port 8000
+ExecStart=PersonalWebsite/backend/.venv/bin/uvicorn app.main:app --host 0.0.0.0 --port 8000
 Restart=always
 RestartSec=5
 
