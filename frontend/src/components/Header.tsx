@@ -28,13 +28,13 @@ export function Header() {
           to="/research"
           className={`nav-link ${isActive("/research") ? "is-active" : ""}`}
         >
-          Research
+          Projects
         </Link>
         <Link
           to="/publications"
           className={`nav-link ${isActive("/publications") ? "is-active" : ""}`}
         >
-          Publications
+          Artifacts
         </Link>
         <Link
           to="/photography"

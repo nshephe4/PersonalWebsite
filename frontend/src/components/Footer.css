@@ -8,5 +8,6 @@
 }
 
 .site-footer a {
-  color: inherit;
+  color: var(--charlotte-green);
+  font-weight: 700;
 }

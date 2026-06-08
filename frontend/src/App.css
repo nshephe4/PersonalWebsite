@@ -1,14 +1,19 @@
 @import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Newsreader:opsz,wght@6..72,400;6..72,600&display=swap");
 
 :root {
-  --ink: #102028;
-  --ink-soft: #2f434c;
-  --paper: #f6f2e8;
-  --paper-deep: #ece4d2;
-  --accent: #c7531e;
-  --accent-soft: #f2b47f;
-  --line: rgba(16, 32, 40, 0.16);
-  --shadow: 0 18px 50px rgba(16, 32, 40, 0.13);
+  --ink: #101820;
+  --ink-soft: #304238;
+  --paper: #fbfaf4;
+  --paper-deep: #f1e6b2;
+  --charlotte-green: #005035;
+  --niner-gold: #a49665;
+  --pine-green: #899064;
+  --sky-blue: #007377;
+  --clay-red: #802f2d;
+  --accent: var(--charlotte-green);
+  --accent-soft: var(--niner-gold);
+  --line: rgba(0, 80, 53, 0.18);
+  --shadow: 0 18px 46px rgba(16, 24, 32, 0.12);
 }
 
 * {
@@ -24,9 +29,9 @@ body {
 body {
   min-height: 100vh;
   color: var(--ink);
-  background: radial-gradient(circle at 12% 18%, #fbe5ce 0%, transparent 35%),
-    radial-gradient(circle at 88% 10%, #d6ece7 0%, transparent 30%),
-    linear-gradient(160deg, var(--paper) 0%, #f0eadf 70%, var(--paper-deep) 100%);
+  background: radial-gradient(circle at 12% 18%, rgba(241, 230, 178, 0.58) 0%, transparent 32%),
+    radial-gradient(circle at 88% 10%, rgba(0, 115, 119, 0.13) 0%, transparent 28%),
+    linear-gradient(160deg, var(--paper) 0%, #f7f4e7 68%, rgba(164, 150, 101, 0.28) 100%);
   font-family: "Space Grotesk", "Segoe UI", sans-serif;
   line-height: 1.6;
   padding: 1.25rem clamp(1rem, 2.3vw, 2.4rem) 2rem;
@@ -52,8 +57,8 @@ main {
   position: fixed;
   inset: 0;
   pointer-events: none;
-  background-image: linear-gradient(transparent 95%, rgba(16, 32, 40, 0.03) 100%),
-    linear-gradient(90deg, transparent 95%, rgba(16, 32, 40, 0.03) 100%);
+  background-image: linear-gradient(transparent 95%, rgba(0, 80, 53, 0.045) 100%),
+    linear-gradient(90deg, transparent 95%, rgba(0, 80, 53, 0.045) 100%);
   background-size: 28px 28px;
   mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.4), transparent 75%);
   z-index: -1;
@@ -97,15 +102,70 @@ p {
 .hero,
 .page-head {
   border: 1px solid var(--line);
-  border-radius: 24px;
+  border-radius: 8px;
   padding: clamp(1.2rem, 3vw, 2.5rem);
-  background: rgba(255, 255, 255, 0.57);
+  background: rgba(255, 255, 255, 0.74);
   box-shadow: var(--shadow);
 }
 
 .hero-text,
 .page-head p {
   max-width: 72ch;
+}
+
+.hero-copy {
+  max-width: 72ch;
+  margin-top: 0.85rem;
+  color: var(--ink-soft);
+}
+
+.hero-split {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(260px, 0.36fr);
+  gap: clamp(1rem, 3vw, 2rem);
+  align-items: stretch;
+}
+
+.profile-panel {
+  border-left: 4px solid var(--niner-gold);
+  background: rgba(241, 230, 178, 0.26);
+  padding: 1rem;
+  display: grid;
+  align-content: start;
+  gap: 0.75rem;
+}
+
+.profile-avatar {
+  width: 92px;
+  aspect-ratio: 1;
+  border-radius: 8px;
+  border: 3px solid rgba(255, 255, 255, 0.8);
+  box-shadow: 0 10px 28px rgba(16, 24, 32, 0.16);
+  object-fit: cover;
+}
+
+.profile-role {
+  color: var(--ink-soft);
+  font-size: 0.95rem;
+}
+
+.tag-list {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  margin: 0;
+  padding: 0;
+}
+
+.tag-list li {
+  border: 1px solid rgba(0, 80, 53, 0.24);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.74);
+  color: var(--charlotte-green);
+  font-size: 0.88rem;
+  font-weight: 700;
+  padding: 0.35rem 0.7rem;
 }
 
 .hero-actions {
@@ -133,7 +193,7 @@ p {
 
 .btn-solid {
   color: #fff;
-  background: linear-gradient(135deg, var(--accent) 0%, #a53f11 100%);
+  background: linear-gradient(135deg, var(--charlotte-green) 0%, #003c2a 100%);
 }
 
 .btn-outline {
@@ -148,10 +208,15 @@ p {
   gap: 1rem;
 }
 
+.section-head {
+  display: grid;
+  gap: 0.2rem;
+}
+
 .card {
   border: 1px solid var(--line);
-  border-radius: 20px;
-  background: rgba(255, 255, 255, 0.65);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.72);
   padding: 1.1rem 1.2rem;
   box-shadow: var(--shadow);
 }
@@ -166,10 +231,10 @@ p {
 }
 
 .spotlight {
-  border-radius: 22px;
+  border-radius: 8px;
   border: 1px solid var(--line);
-  background: linear-gradient(140deg, rgba(16, 32, 40, 0.94), rgba(32, 58, 63, 0.92));
-  color: #f8f7f1;
+  background: linear-gradient(140deg, rgba(0, 80, 53, 0.97), rgba(16, 24, 32, 0.94));
+  color: #fffdf5;
   padding: clamp(1.2rem, 2.8vw, 2rem);
   display: flex;
   align-items: center;
@@ -178,8 +243,8 @@ p {
 }
 
 .spotlight .btn-outline {
-  border-color: rgba(255, 255, 255, 0.35);
-  color: #f8f7f1;
+  border-color: rgba(241, 230, 178, 0.48);
+  color: #fffdf5;
   background: rgba(255, 255, 255, 0.06);
 }
 
@@ -189,7 +254,7 @@ p {
   letter-spacing: 0.14em;
   font-weight: 700;
   font-size: 0.76rem;
-  color: #8a4f30;
+  color: var(--charlotte-green);
 }
 
 .mini-label {
@@ -198,15 +263,15 @@ p {
 
 .timeline {
   border: 1px solid var(--line);
-  border-radius: 20px;
+  border-radius: 8px;
   padding: 1.15rem;
-  background: rgba(255, 255, 255, 0.6);
+  background: rgba(255, 255, 255, 0.72);
   box-shadow: var(--shadow);
 }
 
 .timeline-item {
   padding: 0.9rem 0;
-  border-bottom: 1px dashed rgba(16, 32, 40, 0.18);
+  border-bottom: 1px dashed rgba(0, 80, 53, 0.22);
 }
 
 .timeline-item:last-child {
@@ -215,7 +280,8 @@ p {
 }
 
 .project-grid,
-.pub-list {
+.pub-list,
+.project-list {
   display: grid;
   gap: 1rem;
 }
@@ -224,8 +290,50 @@ p {
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
+.project-card {
+  display: grid;
+  align-content: start;
+  gap: 0.6rem;
+}
+
+.project-card a,
+.repo-link {
+  color: var(--charlotte-green);
+  font-weight: 700;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.18em;
+}
+
+.project-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(260px, 0.9fr) auto;
+  gap: 1rem;
+  align-items: start;
+}
+
+.repo-link {
+  white-space: nowrap;
+}
+
+.compact-row {
+  grid-template-columns: minmax(0, 1fr) auto;
+}
+
+.stat-card {
+  box-shadow: none;
+  background: rgba(241, 230, 178, 0.28);
+}
+
+.stat-number {
+  color: var(--charlotte-green);
+  font-family: "Newsreader", Georgia, serif;
+  font-size: clamp(2.2rem, 6vw, 4.2rem);
+  font-weight: 600;
+  line-height: 0.95;
+}
+
 .pub-item a {
-  color: #155c72;
+  color: var(--sky-blue);
 }
 
 .gallery {
@@ -237,8 +345,8 @@ p {
 .gallery-item {
   margin: 0;
   min-height: 220px;
-  border-radius: 18px;
-  border: 1px solid rgba(16, 32, 40, 0.2);
+  border-radius: 8px;
+  border: 1px solid rgba(0, 80, 53, 0.22);
   overflow: hidden;
   position: relative;
   box-shadow: var(--shadow);
@@ -275,7 +383,7 @@ p {
 .upload-form input[type="file"] {
   width: 100%;
   border: 1px solid var(--line);
-  border-radius: 14px;
+  border-radius: 8px;
   padding: 0.75rem 0.85rem;
   font: inherit;
   background: rgba(255, 255, 255, 0.72);
@@ -298,7 +406,7 @@ p {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top, rgba(12, 20, 25, 0.74), rgba(12, 20, 25, 0.03));
+  background: linear-gradient(to top, rgba(16, 24, 32, 0.76), rgba(0, 80, 53, 0.08));
 }
 
 .gallery-item figcaption {
@@ -310,27 +418,27 @@ p {
 }
 
 .tone-a {
-  background-image: linear-gradient(130deg, #2f4f4f, #ec8f5e);
+  background-image: linear-gradient(130deg, var(--charlotte-green), var(--niner-gold));
 }
 
 .tone-b {
-  background-image: linear-gradient(130deg, #274153, #6394aa);
+  background-image: linear-gradient(130deg, var(--ink), var(--sky-blue));
 }
 
 .tone-c {
-  background-image: linear-gradient(130deg, #5f6f4f, #b5b682);
+  background-image: linear-gradient(130deg, var(--pine-green), var(--paper-deep));
 }
 
 .tone-d {
-  background-image: linear-gradient(130deg, #30363f, #8f6746);
+  background-image: linear-gradient(130deg, var(--ink), var(--niner-gold));
 }
 
 .tone-e {
-  background-image: linear-gradient(130deg, #496269, #d7a06f);
+  background-image: linear-gradient(130deg, var(--sky-blue), var(--paper-deep));
 }
 
 .tone-f {
-  background-image: linear-gradient(130deg, #241e30, #6f5c89);
+  background-image: linear-gradient(130deg, var(--clay-red), var(--charlotte-green));
 }
 
 .reveal {
@@ -358,6 +466,11 @@ p {
   .project-grid,
   .gallery {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .hero-split,
+  .project-row {
+    grid-template-columns: 1fr;
   }
 
   .upload-form {

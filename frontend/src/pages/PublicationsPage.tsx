@@ -1,43 +1,54 @@
+import { projects, supportingProjects } from "../data/profile";
+
 export function PublicationsPage() {
+  const artifacts = projects;
+
   return (
     <main>
       <section className="page-head reveal">
-        <p className="eyebrow">Publications</p>
-        <h1>Selected Academic Work</h1>
+        <p className="eyebrow">Artifacts</p>
+        <h1>LLM/RAG Artifacts and Evaluation Records</h1>
         <p>
-          Below are representative publications and works in progress. Replace
-          placeholder records with full citations and links to final versions.
+          This section is structured for formal publications as they become
+          available. For now, it highlights public technical artifacts tied to
+          policy, procedure, and contract-oriented LLM/RAG work.
         </p>
       </section>
 
       <section className="pub-list reveal">
-        <article className="card pub-item">
-          <p className="mini-label">2026</p>
-          <h2>Shepherd, N. J. (2026). Title of Journal Article.</h2>
-          <p>
-            <em>Journal Name</em>, 12(3), 101-128.
-          </p>
-          <a href="#" aria-disabled="true">
-            DOI / Link placeholder
-          </a>
-        </article>
+        {artifacts.map((artifact) => (
+          <article className="card pub-item" key={artifact.repo}>
+            <p className="mini-label">{artifact.status}</p>
+            <h2>{artifact.name}</h2>
+            <p>{artifact.summary}</p>
+            <a href={artifact.href}>Read repository documentation</a>
+          </article>
+        ))}
+      </section>
 
-        <article className="card pub-item">
-          <p className="mini-label">2025</p>
-          <h2>Shepherd, N. J., &amp; Collaborator, A. (2025). Conference Paper Title.</h2>
-          <p>
-            <em>Proceedings of Conference Name</em>.
-          </p>
-          <a href="#" aria-disabled="true">
-            Conference repository placeholder
-          </a>
-        </article>
+      <section className="section-head reveal">
+        <p className="eyebrow">Supporting Artifacts</p>
+        <h2>Additional Technical Records</h2>
+      </section>
 
-        <article className="card pub-item">
-          <p className="mini-label">In Review</p>
-          <h2>Shepherd, N. J. Manuscript on interdisciplinary research design.</h2>
-          <p>Under peer review.</p>
-        </article>
+      <section className="pub-list reveal">
+        {supportingProjects.map((artifact) => (
+          <article className="card pub-item" key={artifact.repo}>
+            <p className="mini-label">{artifact.status}</p>
+            <h2>{artifact.name}</h2>
+            <p>{artifact.summary}</p>
+            <a href={artifact.href}>Read repository documentation</a>
+          </article>
+        ))}
+      </section>
+
+      <section className="card reveal">
+        <p className="mini-label">Future Section</p>
+        <h2>Formal Publications</h2>
+        <p>
+          Add peer-reviewed citations, preprints, conference papers, posters,
+          and dataset DOIs here as they are ready for public display.
+        </p>
       </section>
     </main>
   );

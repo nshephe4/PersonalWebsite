@@ -79,12 +79,10 @@ async def get_info():
     """Get portfolio metadata"""
     return {
         "name": "Nathaniel J. Shepherd",
-        "title": "Graduate Student",
-        "email": "your.email@example.com",
+        "title": "Ph.D. student at the University of Tennessee, Knoxville",
+        "email": "nathaniel.shepherd@utk.edu",
         "social": {
-            "github": "https://github.com",
-            "linkedin": "https://linkedin.com",
-            "twitter": "https://twitter.com"
+            "github": "https://github.com/nshephe4"
         }
     }
 

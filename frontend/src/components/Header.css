@@ -8,14 +8,14 @@
 
 .brand {
   text-decoration: none;
-  color: var(--ink);
+  color: #fff;
   font-weight: 700;
   font-size: 1.18rem;
   letter-spacing: 0.18em;
-  border: 1px solid var(--line);
-  border-radius: 999px;
+  border: 1px solid rgba(0, 80, 53, 0.35);
+  border-radius: 8px;
   padding: 0.35rem 0.8rem;
-  background: rgba(255, 255, 255, 0.5);
+  background: var(--charlotte-green);
 }
 
 .site-nav {
@@ -29,19 +29,19 @@
 .nav-link {
   text-decoration: none;
   color: var(--ink-soft);
-  border-radius: 999px;
+  border-radius: 8px;
   padding: 0.45rem 0.88rem;
   transition: background-color 180ms ease, color 180ms ease, transform 180ms ease;
 }
 
 .nav-link:hover,
 .nav-link:focus-visible {
-  background: rgba(255, 255, 255, 0.75);
-  color: var(--ink);
+  background: rgba(241, 230, 178, 0.58);
+  color: var(--charlotte-green);
   transform: translateY(-1px);
 }
 
 .nav-link.is-active {
-  background: var(--ink);
+  background: var(--charlotte-green);
   color: #fff;
 }

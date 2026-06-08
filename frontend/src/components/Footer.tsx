@@ -5,7 +5,7 @@ export function Footer() {
     <footer className="site-footer">
       <p>&copy; {new Date().getFullYear()} Nathaniel J. Shepherd</p>
       <p>
-        <a href="mailto:your.email@example.com">your.email@example.com</a>
+        <a href="mailto:nathaniel.shepherd@utk.edu">nathaniel.shepherd@utk.edu</a>
       </p>
     </footer>
   );
